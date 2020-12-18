@@ -2,6 +2,7 @@ from django.db import models
 from django.utils import timezone
 # from django.contrib.auth.models import User
 from users.models import CustomUser
+from django.db.models import Avg
 
 # Create your models here.
 
@@ -17,11 +18,11 @@ CAT_CHOICES = [
 ]
 
 RATING_CHOICES = [
-    (1, '1 Star'),
-    (2, '2 Star'),
-    (3, '3 Star'),
-    (4, '4 Star'),
-    (5, '5 Star'),
+    ('1', '1 Star'),
+    ('2', '2 Star'),
+    ('3', '3 Star'),
+    ('4', '4 Star'),
+    ('5', '5 Star'),
 ]
 
 class Product(models.Model):
@@ -46,3 +47,13 @@ class Review(models.Model):
 
     def __str__(self):
         return self.title
+
+class Cart(models.Model):
+
+    user = models.OneToOneField(
+        CustomUser, on_delete=models.CASCADE)
+
+    cart_items = models.ManyToManyField(Product)
+
+    def __str__(self):
+        return f'Cart of {self.user.username}'

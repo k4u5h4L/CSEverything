@@ -27,127 +27,38 @@
 			</div>
 			<div class="content shop-layout--style-2">
 			
+				{% for product in products %}
 					<div class="product">
-						<a href="shop-product.html" class="product__thumbnail">
-							<img src="assets/img/samples/product-img-01.png" alt="">
+						<a href="{% url 'shop_product_page' product.product.id %}" class="product__thumbnail">
+							<img src="{{ product.product.image.url }}" alt="">
 							<div class="btn btn-tertiary">Add to cart +</div>
 						</a>
 						<div class="product__body">
 							<div class="product__header">
 								<ul class="product__cats list-unstyled">
 									<li class="product__cats-item">
-										<a href="#">Framed prints</a>
-									</li>
+										<a href="#">{{ product.product.category }}</a>
+									</li>	
 								</ul>
-								<h2 class="product__title h4"><a href="shop-product.html">Magimons black framed print</a></h2>
+								<h2 class="product__title h4"><a href="{% url 'shop_product_page' product.product.id %}">{{ product.product.name }}</a></h2>
 								<ul class="product__meta list-unstyled">
-									<li class="product__meta-item product__price">$38.00</li>
+									<li class="product__meta-item product__price">${{ product.product.price }}</li>
 									<li class="product__meta-item product__ratings">
+										{% if product.reviews|length != 0 %}
 										<div class="fas star-rating">
-											<span style="width: 80%;">&nbsp;</span>
+											<span style="width: {{ product.review_sum }}%;">&nbsp;</span>
 										</div>
+										{% else %}
+										No reviews yet
+										{% endif %}
 									</li>
 								</ul>
 							</div>
 						</div>
 					</div>
-					<div class="product">
-						<a href="shop-product.html" class="product__thumbnail">
-							<img src="assets/img/samples/product-img-02.png" alt="">
-							<div class="btn btn-tertiary">Add to cart +</div>
-						</a>
-						<div class="product__body">
-							<div class="product__header">
-								<ul class="product__cats list-unstyled">
-									<li class="product__cats-item">
-										<a href="#">Coffee mugs</a>
-									</li>
-								</ul>
-								<h2 class="product__title h4"><a href="shop-product.html">Necromancers ennamel mug</a></h2>
-								<ul class="product__meta list-unstyled">
-									<li class="product__meta-item product__price">$16.00</li>
-									<li class="product__meta-item product__ratings">
-										<div class="fas star-rating">
-											<span style="width: 60%;">&nbsp;</span>
-										</div>
-									</li>
-								</ul>
-							</div>
-						</div>
-					</div>
-					<div class="product">
-						<a href="shop-product.html" class="product__thumbnail">
-							<img src="assets/img/samples/product-img-03.png" alt="">
-							<div class="btn btn-tertiary">Add to cart +</div>
-						</a>
-						<div class="product__body">
-							<div class="product__header">
-								<ul class="product__cats list-unstyled">
-									<li class="product__cats-item">
-										<a href="#">Clothing</a>
-									</li>
-								</ul>
-								<h2 class="product__title h4"><a href="shop-product.html">Necromancers women&#x27;s t-shirt</a></h2>
-								<ul class="product__meta list-unstyled">
-									<li class="product__meta-item product__price">$24.99</li>
-									<li class="product__meta-item product__ratings">
-										<div class="fas star-rating">
-											<span style="width: 100%;">&nbsp;</span>
-										</div>
-									</li>
-								</ul>
-							</div>
-						</div>
-					</div>
-					<div class="product">
-						<a href="shop-product.html" class="product__thumbnail">
-							<img src="assets/img/samples/product-img-04.png" alt="">
-							<div class="btn btn-tertiary">Add to cart +</div>
-						</a>
-						<div class="product__body">
-							<div class="product__header">
-								<ul class="product__cats list-unstyled">
-									<li class="product__cats-item">
-										<a href="#">Framed prints</a>
-									</li>
-								</ul>
-								<h2 class="product__title h4"><a href="shop-product.html">Guardians white frame print</a></h2>
-								<ul class="product__meta list-unstyled">
-									<li class="product__meta-item product__price">$32.00</li>
-									<li class="product__meta-item product__ratings">
-										<div class="fas star-rating">
-											<span style="width: 80%;">&nbsp;</span>
-										</div>
-									</li>
-								</ul>
-							</div>
-						</div>
-					</div>
-					<div class="product">
-						<a href="shop-product.html" class="product__thumbnail">
-							<img src="assets/img/samples/product-img-01.png" alt="">
-							<div class="btn btn-tertiary">Add to cart +</div>
-						</a>
-						<div class="product__body">
-							<div class="product__header">
-								<ul class="product__cats list-unstyled">
-									<li class="product__cats-item">
-										<a href="#">Framed prints</a>
-									</li>
-								</ul>
-								<h2 class="product__title h4"><a href="shop-product.html">Magimons black framed print</a></h2>
-								<ul class="product__meta list-unstyled">
-									<li class="product__meta-item product__price">$38.00</li>
-									<li class="product__meta-item product__ratings">
-										<div class="fas star-rating">
-											<span style="width: 80%;">&nbsp;</span>
-										</div>
-									</li>
-								</ul>
-							</div>
-						</div>
-					</div>
-					<div class="product">
+				{% endfor %}
+
+					<!-- <div class="product">
 						<a href="shop-product.html" class="product__thumbnail">
 							<img src="assets/img/samples/product-img-02.png" alt="">
 							<div class="btn btn-tertiary">Add to cart +</div>
@@ -170,7 +81,7 @@
 								</ul>
 							</div>
 						</div>
-					</div>
+					</div> -->
 			
 			</div>
 			

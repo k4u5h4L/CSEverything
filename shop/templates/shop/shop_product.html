@@ -192,6 +192,8 @@
 
 {% endblock header %}
 
+{% block pagination %}<div></div>{% endblock pagination %}
+
 {% block content %}
 
     <!-- Content
@@ -225,8 +227,8 @@
 								<li class="product__meta-item product__price">${{ product.price }}</li>
 								<li class="product__meta-item product__ratings">
 									<div class="fas star-rating">
-										<span style="width: 100%;">&nbsp;</span>
-										<span class="star-rating__label">5.0 out of 3 reviews</span>
+										<span style="width: {{ review_sum }}%;">&nbsp;</span>
+										<span class="star-rating__label">{% widthratio review_sum 20 1 %} out of {{ reviews|length }} reviews</span>
 									</div>
 								</li>
 							</ul>
@@ -269,33 +271,36 @@
 					<!-- Product Review Form -->
 					<div class="product-review-form">
 						<h4 class="product-review-form__title">Write a review</h4>
-						<form action="#" class="review-form">
+						<form action="{% url 'create_review_page' product.id %}" method="POST"  class="review-form">
+							{% csrf_token %}
 							<div class="row">
 								<div class="col-md-6">
 									<div class="form-group">
-										<input type="text" class="form-control" id="input-default" placeholder="Your Name">
+										<input type="text" name="title" maxlength="100" class="form-control" id="id_title" placeholder="Review title" />
 									</div>
 								</div>
 								<div class="col-md-6">
 									<div class="form-group select-wrapper">
-										<select name="select-rating" id="select-rating">
-											<option value="5">5 Stars</option>
-											<option value="4">4 Stars</option>
-											<option value="3">3 Stars</option>
-											<option value="2">2 Stars</option>
+										<select name="rating" required id="id_rating">
+											<option value selected>Choose rating</option>
 											<option value="1">1 Stars</option>
+											<option value="2">2 Stars</option>
+											<option value="3">3 Stars</option>
+											<option value="4">4 Stars</option>
+											<option value="5">5 Stars</option>
 										</select>
+										<!-- {{ form.rating }} -->
 									</div>
 								</div>
 							</div>
 							<div class="row">
 								<div class="col-md-12">
 									<div class="form-group">
-										<textarea name="input-review" cols="30" rows="5" class="form-control" id="input-review" placeholder="Your Review"></textarea>
+										<textarea name="text" maxlength="500" cols="30" rows="5" class="form-control" id="id_text"  placeholder="Review Description"></textarea>
 									</div>
 								</div>
 							</div>
-							<button class="btn btn-secondary">Post Review</button>
+							<button type="submit" class="btn btn-secondary">Post Review</button>
 						</form>
 					</div>
 					<!-- Product Review Form / End -->

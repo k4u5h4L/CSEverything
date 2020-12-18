@@ -6,6 +6,8 @@ from django.views.generic.edit import CreateView
 from django.contrib import messages
 from django.contrib.auth import authenticate, login as auth_login, logout as auth_logout
 
+from .models import Profile
+
 # from .models import Profile
 
 
@@ -54,15 +56,19 @@ def register(request):
         form = CustomUserCreationForm(request.POST)
 
         if form.is_valid():
-            form.save()
+            form.save(commit=False)
             username = form.cleaned_data.get('username')
             password = form.cleaned_data.get('password1')
             # messages.success(request, f'Account created for {username}!')
             print(f'Account created for {username}!')
 
+
             user = authenticate(request, username=username, password=password)
 
             auth_login(request, user)
+
+            profile = Profile(user=request.user)
+            profile.save()
 
             return redirect('home_page')
         else:
