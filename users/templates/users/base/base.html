@@ -53,7 +53,7 @@
 		
 			<!-- Logo - Image Based -->
 			<div class="header-logo header-logo--img">
-				<a href="index.html"><img src="assets/img/logo.png" srcset="assets/img/logo@2x.png 2x" alt="Necromancers"></a>
+				<a href="{% url 'home_page' %}"><img src="{% static 'esports/assets/cseverything-logo.png' %}" style="height: inherit;" alt="cseverything-logo"></a>
 			</div>
 			<!-- Logo - Image Based / End -->
 		
@@ -61,7 +61,7 @@
 			<!-- Main Navigation -->
 			<nav class="main-nav">
 				<ul class="main-nav__list">
-					<li class=""><a href="home.html">Home</a></li>
+					<li class=""><a href="{% url 'home_page' %}">Home</a></li>
 					<li class="">
 						<a href="#">Teams</a>
 						<ul class="main-nav__sub">
@@ -235,15 +235,15 @@
 			<div class="header-actions">
 				<div class="header-top-bar-toggle d-md-none hide">
 					<svg role="img" class="df-icon df-icon--joystick">
-						<use xlink:href="assets/img/necromancers.svg#joystick"/>
+						<use xlink:href="{% static 'esports/assets/img/necromancers.svg' %}#joystick"/>
 					</svg>
 					<svg role="img" class="df-icon df-icon--close">
-						<use xlink:href="assets/img/necromancers.svg#close"/>
+						<use xlink:href="{% static 'esports/assets/img/necromancers.svg' %}#close"/>
 					</svg>
 				</div>
 				<div class="header-social-toggle d-none d-md-block">
 					<svg role="img" class="df-icon df-icon--thumb-up">
-						<use xlink:href="assets/img/necromancers.svg#thumb-up"/>
+						<use xlink:href="{% static 'esports/assets/img/necromancers.svg' %}#thumb-up"/>
 					</svg>
 					<span class="header-social-toggle__plus">&nbsp;</span>
 					<ul class="social-menu social-menu--header">
@@ -255,33 +255,33 @@
 				</div>
 				<div class="header-cart-toggle">
 					<svg role="img" class="df-icon df-icon--bag">
-						<use xlink:href="assets/img/necromancers.svg#bag"/>
+						<use xlink:href="{% static 'esports/assets/img/necromancers.svg' %}#bag"/>
 					</svg>
 					<svg role="img" class="df-icon df-icon--close">
-						<use xlink:href="assets/img/necromancers.svg#close"/>
+						<use xlink:href="{% static 'esports/assets/img/necromancers.svg' %}#close"/>
 					</svg>
 					<span class="header-cart-toggle__items-count">4</span>
 				</div>
 				<div class="header-search-toggle">
 					<svg role="img" class="df-icon df-icon--search">
-						<use xlink:href="assets/img/necromancers.svg#search"/>
+						<use xlink:href="{% static 'esports/assets/img/necromancers.svg' %}#search"/>
 					</svg>
 					<svg role="img" class="df-icon df-icon--search-close">
-						<use xlink:href="assets/img/necromancers.svg#search-close"/>
+						<use xlink:href="{% static 'esports/assets/img/necromancers.svg' %}#search-close"/>
 					</svg>
 				</div>
 				<div class="header-account header-account--guest hide">
 					<div class="header-account__avatar">
-						<img src="assets/img/account-guest-avatar.jpg" alt="">
+						<img src="{% static 'esports/assets/img/account-guest-avatar.jpg' %}" alt="">
 					</div>
 					<div class="header-account__body">
 						Welcome
 						<div class="header-account__name">Necro Guest</div>
 					</div>
 					<div class="header-account__icon">
-						<a href="login-register.html">
+						<a href="{% url 'landing_page' %}">
 							<svg role="img" class="df-icon df-icon--login-register">
-								<use xlink:href="{% static 'esports/assets/img/necromancers.svg#login-register' %}"/>
+								<use xlink:href="{% static 'esports/assets/img/necromancers.svg' %}#login-register"/>
 							</svg>
 						</a>
 					</div>
@@ -303,7 +303,7 @@
                 <div class="preloader-inner fadeInUp">
                     <div class="pong-loader"></div>
                     <svg role="img" class="df-icon df-icon--preloader-arcade">
-                        <use xlink:href="{% static 'esports/assets/img/necromancers.svg#preloader-arcade' %}"/>
+                        <use xlink:href="{% static 'esports/assets/img/necromancers.svg' %}#preloader-arcade"/>
                     </svg>
                 </div>
             </div>

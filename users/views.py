@@ -56,12 +56,12 @@ def register(request):
         form = CustomUserCreationForm(request.POST)
 
         if form.is_valid():
-            form.save(commit=False)
             username = form.cleaned_data.get('username')
             password = form.cleaned_data.get('password1')
             # messages.success(request, f'Account created for {username}!')
             print(f'Account created for {username}!')
 
+            form.save()
 
             user = authenticate(request, username=username, password=password)
 

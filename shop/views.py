@@ -13,7 +13,6 @@ from .forms import ReviewForm
 
 # Create your views here.
 
-@login_required
 def shop_home_page(request):
     products = Product.objects.all().order_by('-timestamp')
 
@@ -36,7 +35,6 @@ def shop_home_page(request):
 
     return render(request, 'shop/shop_home.html', context)
 
-@login_required
 def shop_product_page(request, productId):
     try:
         product = Product.objects.get(id=productId)
@@ -65,7 +63,6 @@ def shop_product_page(request, productId):
         
     return render(request, 'shop/shop_product.html', context)
 
-@login_required
 def create_review(request, productId):
     if request.method == 'POST':
         try:
